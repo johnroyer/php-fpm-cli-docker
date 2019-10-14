@@ -11,11 +11,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN aptitude install -y coreutils git vim \
-    php7.2-cli php7.2-fpm php7.2-json php7.2 php7.2-xml php7.2-mysql php7.2-curl php7.2-redis php7.2-json
+    php7.3-cli php7.3-fpm php7.3-json php7.3 php7.3-xml php7.3-mysql php7.3-curl php7.3-redis php7.3-json
 
-COPY /fpm/php.ini /etc/php/7.2/fpm/
-COPY ./fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/
+COPY /fpm/php.ini /etc/php/7.3/fpm/
+COPY ./fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/
 
-COPY ./cli/php.ini /etc/php/7.2/cli/
+COPY ./cli/php.ini /etc/php/7.3/cli/
 
-RUN service php7.2-fpm restart
+RUN service php7.3-fpm restart
