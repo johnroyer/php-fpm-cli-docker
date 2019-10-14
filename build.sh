@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build . -t johnroyer/php-fpm-cli:$1
+docker build . -t johnroyer/laravel-testing:$1
