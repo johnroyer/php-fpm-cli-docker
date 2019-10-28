@@ -15,15 +15,15 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN aptitude update
 
 RUN aptitude install -y git vim \
-    php7.3-cli php7.3-fpm php7.3-json php7.3 php7.3-xml php7.3-mysql php7.3-curl php7.3-redis php7.3-json \
-    php7.3-bz2 php7.3-zip php7.3-sqlite3 php7.3-intl php7.3-mbstring
+    php7.1-cli php7.1-fpm php7.1-json php7.1 php7.1-xml php7.1-mysql php7.1-curl php7.1-redis php7.1-json \
+    php7.1-bz2 php7.1-zip php7.1-sqlite3 php7.1-intl php7.1-mbstring
 
-COPY /fpm/php.ini /etc/php/7.3/fpm/
-COPY /fpm/php-fpm.conf /etc/php/7.3/fpm/
-COPY ./fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/
+COPY /fpm/php.ini /etc/php/7.1/fpm/
+COPY /fpm/php-fpm.conf /etc/php/7.1/fpm/
+COPY ./fpm/pool.d/www.conf /etc/php/7.1/fpm/pool.d/
 
-COPY ./cli/php.ini /etc/php/7.3/cli/
+COPY ./cli/php.ini /etc/php/7.1/cli/
 
 RUN apt-get clean
 
-RUN service php7.3-fpm restart
+RUN service php7.1-fpm restart
