@@ -24,4 +24,6 @@ COPY ./fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/
 
 COPY ./cli/php.ini /etc/php/7.3/cli/
 
+RUN apt-get clean
+
 RUN service php7.3-fpm restart
