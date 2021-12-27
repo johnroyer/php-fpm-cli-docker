@@ -11,13 +11,13 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get update
 
 RUN apt-get install -y git vim \
-    php7.4-cli php7.4-fpm php7.4-json php7.4 php7.4-xml php7.4-mysql php7.4-curl php7.4-redis php7.4-json \
-    php7.4-bz2 php7.4-zip php7.4-sqlite3 php7.4-intl php7.4-mbstring
+    php8.0-cli php8.0-fpm php8.0 php8.0-xml php8.0-mysql php8.0-curl php8.0-redis \
+    php8.0-bz2 php8.0-zip php8.0-sqlite3 php8.0-intl php8.0-mbstring
 
-COPY /fpm/php.ini /etc/php/7.4/fpm/
-COPY /fpm/php-fpm.conf /etc/php/7.4/fpm/
-COPY ./fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/
-COPY ./cli/php.ini /etc/php/7.4/cli/
+COPY /fpm/php.ini /etc/php/8.0/fpm/
+COPY /fpm/php-fpm.conf /etc/php/8.0/fpm/
+COPY ./fpm/pool.d/www.conf /etc/php/8.0/fpm/pool.d/
+COPY ./cli/php.ini /etc/php/8.0/cli/
 
 COPY main.sh /root/
 
