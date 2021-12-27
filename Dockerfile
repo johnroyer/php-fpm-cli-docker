@@ -1,29 +1,26 @@
-From ubuntu:bionic
+From ubuntu:20.04
 
-COPY sources.list /etc/apt/
+RUN apt-get update && apt-get install -y software-properties-common apt-utils
 
-RUN apt-get update && apt-get install -y aptitude  software-properties-common apt-utils && aptitude update
-
-
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime && \
-    aptitude install -y tzdata && \
-    dpkg-reconfigure --frontend noninteractive tzdata
+RUN export DEBIAN_FRONTEND=noninteractive
 
 RUN add-apt-repository -y ppa:ondrej/php
 
-RUN aptitude update
+RUN apt-get update
 
-RUN aptitude install -y git vim \
-    php7.3-cli php7.3-fpm php7.3-json php7.3 php7.3-xml php7.3-mysql php7.3-curl php7.3-redis php7.3-json \
-    php7.3-bz2 php7.3-zip php7.3-sqlite3 php7.3-intl php7.3-mbstring
+RUN apt-get install -y git vim \
+    php7.4-cli php7.4-fpm php7.4-json php7.4 php7.4-xml php7.4-mysql php7.4-curl php7.4-redis php7.4-json \
+    php7.4-bz2 php7.4-zip php7.4-sqlite3 php7.4-intl php7.4-mbstring
 
-COPY /fpm/php.ini /etc/php/7.3/fpm/
-COPY /fpm/php-fpm.conf /etc/php/7.3/fpm/
-COPY ./fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/
+RUN apt-get install -y mysql-server-8.0
 
-COPY ./cli/php.ini /etc/php/7.3/cli/
+COPY /fpm/php.ini /etc/php/7.4/fpm/
+COPY /fpm/php-fpm.conf /etc/php/7.4/fpm/
+COPY ./fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/
+COPY ./cli/php.ini /etc/php/7.4/cli/
 
-RUN apt-get clean
+COPY main.sh /root/
 
-RUN service php7.3-fpm restart
+RUN apt-get clean && rm -fr /var/lib/apt/list/*
+
+ENTRYPOINT ["/root/main.sh"]
