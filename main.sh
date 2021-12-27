@@ -14,4 +14,4 @@ service php7.4-fpm start && echo "PHP started ..."
 service nginx start && echo "Nginx started ..."
 echo ""
 
-tail -f /var/log/nginx/access.log
+tail -f /dev/stderr
