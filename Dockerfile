@@ -11,13 +11,13 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get update
 
 RUN apt-get install -y git vim \
-    php8.0-cli php8.0-fpm php8.0 php8.0-xml php8.0-mysql php8.0-curl php8.0-redis \
-    php8.0-bz2 php8.0-zip php8.0-sqlite3 php8.0-intl php8.0-mbstring
+    php8.1-cli php8.1-fpm php8.1 php8.1-xml php8.1-mysql php8.1-curl php8.1-redis \
+    php8.1-bz2 php8.1-zip php8.1-sqlite3 php8.1-intl php8.1-mbstring
 
-COPY /fpm/php.ini /etc/php/8.0/fpm/
-COPY /fpm/php-fpm.conf /etc/php/8.0/fpm/
-COPY ./fpm/pool.d/www.conf /etc/php/8.0/fpm/pool.d/
-COPY ./cli/php.ini /etc/php/8.0/cli/
+COPY /fpm/php.ini /etc/php/8.1/fpm/
+COPY /fpm/php-fpm.conf /etc/php/8.1/fpm/
+COPY ./fpm/pool.d/www.conf /etc/php/8.1/fpm/pool.d/
+COPY ./cli/php.ini /etc/php/8.1/cli/
 
 COPY main.sh /root/
 
