@@ -20,6 +20,8 @@ COPY ./fpm/pool.d/www.conf /etc/php/7.1/fpm/pool.d/
 
 COPY ./cli/php.ini /etc/php/7.1/cli/
 
-RUN apt-get clean
+COPY main.sh /root/
 
-RUN service php7.1-fpm restart
+RUN apt-get clean && rm -fr /var/lib/apt/list/*
+
+ENTRYPOINT ["/root/main.sh"]
