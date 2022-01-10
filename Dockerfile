@@ -1,7 +1,5 @@
 From ubuntu:bionic
 
-COPY sources.list /etc/apt/
-
 RUN apt-get update && apt-get install -y aptitude  software-properties-common apt-utils && aptitude update
 
 RUN export DEBIAN_FRONTEND=noninteractive
