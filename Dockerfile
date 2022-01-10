@@ -4,11 +4,12 @@ COPY sources.list /etc/apt/
 
 RUN apt-get update && apt-get install -y aptitude  software-properties-common apt-utils && aptitude update
 
-
 RUN export DEBIAN_FRONTEND=noninteractive && \
     ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime && \
     aptitude install -y tzdata && \
     dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN apt-get install -y mysql-server-8.0
 
 RUN add-apt-repository -y ppa:ondrej/php
 
