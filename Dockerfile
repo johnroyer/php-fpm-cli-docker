@@ -1,4 +1,4 @@
-From ubuntu:bionic
+From ubuntu:20.04
 
 RUN apt-get update && apt-get install -y aptitude  software-properties-common apt-utils && aptitude update
 
